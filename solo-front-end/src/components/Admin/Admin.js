@@ -15,7 +15,7 @@ function Admin() {
   const [customerData, setCustomerData] = useState([]);
 
   function callMockAPIWithAxiosGET() {
-    const endpointURL = `http://localhost:8080/applicants/id?id=${idToGet}`;
+    const endpointURL = `http://capstone-project-capstone-project.allstatejenkins11.conygre.com/applicants/id?id=${idToGet}`;
 
     axios
       .get(endpointURL)
@@ -37,7 +37,7 @@ function Admin() {
   }
 
   function callMockAPIWithAxiosDELETE() {
-    const endpointURL = `http://localhost:8080/applicants?id=${idToDelete}`;
+    const endpointURL = `http://capstone-project-capstone-project.allstatejenkins11.conygre.com/applicants?id=${idToDelete}`;
     axios
       .delete(endpointURL)
       .then((response) => {
@@ -63,7 +63,7 @@ function Admin() {
     };
 
     const endpointURL =
-      "http://localhost:8080/applicants/?id=" +
+      "http://capstone-project-capstone-project.allstatejenkins11.conygre.com/applicants/?id=" +
       idToUpdate +
       "&telephoneNumber=" +
       telephoneNumber;

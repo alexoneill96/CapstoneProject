@@ -69,7 +69,7 @@ function Create() {
       dateRegistered,
     };
 
-    const endpointURL = "http://localhost:8080/applicants";
+    const endpointURL = "http://capstone-project-capstone-project.allstatejenkins11.conygre.com/applicants";
 
     axios
       .post(endpointURL, formData)
