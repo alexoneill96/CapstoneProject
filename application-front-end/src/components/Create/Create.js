@@ -8,6 +8,7 @@ import "./Create.css";
 import { toast } from "react-toastify";
 import {Link} from "react-router-dom";
 
+// FUNCTION FOR RELOADING PAGE ON FORM COMPLETION
 function Create() {
   const refreshPage = () => {
     window.location.reload();
@@ -20,7 +21,7 @@ function Create() {
   let year = newDate.getFullYear();
   let dateFormatted = `${year}-${month}-${date}`;
 
-  // Properties mapping to form fields
+  // INITIALISING FORM FIELD STATES
   const [prefix, setPrefix] = useState();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -37,7 +38,7 @@ function Create() {
   const [currentValue, setCurrentValue] = useState("");
   const [dateRegistered, setDateRegistered] = useState("");
 
-  // Field error status, all initialized false
+  // FIELD ERROR STATUS
   const [fieldErrors, setFieldErrors] = useState({
     prefix: false,
     firstName: false,
@@ -58,6 +59,7 @@ function Create() {
     dateRegistered: false,
   });
 
+  // CALL MOCKAPI FUNCTION
   const callMockAPI = () => {
     const formData = {
       prefix,
@@ -76,27 +78,25 @@ function Create() {
       currentValue,
       dateRegistered,
     };
-
     const endpointURL = "http://capstone-project-capstone-project.allstatejenkins11.conygre.com/applicants";
-
     axios
       .post(endpointURL, formData)
       .then((response) => console.log(response.data))
       .catch((err) => console.log(err));
-
     getQuoteAmount();
   };
 
-  // Complete this
-  const getQuoteAmount = () => {};
 
+  // HANDLE SUBMIT FUNCTION
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // INITIALISE VALID
     let formValidFlag = true;
 
+    //CHECK FIRST FORM FIELD
     formValidFlag = validatePrefix(prefix);
-
+    // IF VALID, MOVE ON...
     if (formValidFlag) {
       formValidFlag = validateFirstName(firstName);
     }
@@ -115,7 +115,6 @@ function Create() {
     if (formValidFlag) {
       formValidFlag = validateZipCode(zipCode);
     }
-
     if (formValidFlag) {
       formValidFlag = validateVehicleType(vehicleType);
     }
@@ -132,6 +131,7 @@ function Create() {
       formValidFlag = validateDateRegistered(dateRegistered);
     }
 
+    // IF ALL VALID, CALL POST TO DATABASE
     if (formValidFlag) {
       callMockAPI();
       toast.success("New Driver Record Created!");
@@ -143,6 +143,7 @@ function Create() {
     }
   };
 
+  // VALIDATION RULES - VALIDATE PREFIX
   const validatePrefix = (prefix) => {
     if (prefix === "" || prefix === null || prefix === undefined) {
       fieldErrors.prefix = true;
@@ -155,6 +156,7 @@ function Create() {
     return true;
   };
 
+  // VALIDATION RULES - VALIDATE FIRSTNAME
   const validateFirstName = (firstName) => {
     if (firstName === "" || firstName === null || firstName === undefined) {
       fieldErrors.firstName = true;
@@ -167,6 +169,7 @@ function Create() {
     return true;
   };
 
+  // VALIDATION RULES - VALIDATE SURNAME
   const validateLastName = (lastName) => {
     if (lastName === "" || lastName === null || lastName === undefined) {
       fieldErrors.lastName = true;
@@ -179,6 +182,7 @@ function Create() {
     return true;
   };
 
+  // VALIDATION RULES - VALIDATE TELEPHONE NUMBER
   const validateTelephoneNumber = (telephoneNumber) => {
     if (
       telephoneNumber === "" ||
@@ -203,6 +207,7 @@ function Create() {
     return true;
   };
 
+  // VALIDATION RULES - VALIDATE ADDRESS LINE 1
   const validateAddressLine1 = (addressLine1) => {
     if (
       addressLine1 === "" ||
@@ -219,6 +224,7 @@ function Create() {
     return true;
   };
 
+  // VALIDATION RULES - VALIDATE CITY
   const validateCity = (city) => {
     if (city === "" || city === null || city === undefined) {
       fieldErrors.city = true;
@@ -231,6 +237,7 @@ function Create() {
     return true;
   };
 
+  // VALIDATION RULES - VALIDATE ZIPCODE
   const validateZipCode = (zipCode) => {
     if (zipCode === "" || zipCode === null || zipCode === undefined) {
       fieldErrors.zipCode = true;
@@ -243,6 +250,7 @@ function Create() {
     return true;
   };
 
+  // VALIDATION RULES - VALIDATE VEHICLE TYPE
   const validateVehicleType = (vehicleType) => {
     if (
       vehicleType === "" ||
@@ -259,6 +267,7 @@ function Create() {
     return true;
   };
 
+  // VALIDATION RULES - VALIDATE ENGINE SIZE
   const validateEngineSize = (engineSize) => {
     if (engineSize === "" || engineSize === null || engineSize === undefined) {
       fieldErrors.engineSize = true;
@@ -271,6 +280,7 @@ function Create() {
     return true;
   };
 
+  // VALIDATION RULES - VALIDATE ADDITIONAL DRIVERS
   const validateAdditionalDrivers = (additionalDrivers) => {
     if (
       additionalDrivers === "" ||
@@ -287,6 +297,7 @@ function Create() {
     return true;
   };
 
+  // VALIDATION RULES - VALIDATE CURRENT VALUE
   const validateCurrentValue = (currentValue) => {
     if (
       currentValue === "" ||
@@ -303,6 +314,7 @@ function Create() {
     return true;
   };
 
+  // VALIDATION RULES - VALIDATE DATE REGISTERED
   const validateDateRegistered = (dateRegistered) => {
     if (
       dateRegistered === "" ||
@@ -319,6 +331,7 @@ function Create() {
     return true;
   };
 
+  // RADIO HANDLES - COMMERCIAL PURPOSES
   const handleCommercialPurposesChange = (value) => {
     if (value) {
       setCommercialPurposes("Yes");
@@ -327,6 +340,7 @@ function Create() {
     }
   };
 
+  // RADIO HANDLES - OUTSIDE REGISTERED STATE
   const handleOutsideRegisteredStateChange = (value) => {
     if (value) {
       setUsedOutsideState("Yes");
@@ -335,12 +349,10 @@ function Create() {
     }
   };
 
+  // HTML
   return (
     <div>
       <Form className="main-form">
-        {/* <div>
-          <Image src={logo} className="center" />
-        </div> */}
         <Segment>
           <Link to={'/Admin'}>
           <Button color='blue' size={'large'}animated>
@@ -395,7 +407,6 @@ function Create() {
                 }
               />
             </Form.Field>
-
             <Form.Field>
               <label>Telephone Number</label>
               <Form.Input
@@ -564,7 +575,6 @@ function Create() {
           </Form.Group>
         </Segment>
         <Segment>
-
           <Button fluid size='huge' animated='vertical' color={'blue'} type="submit" onClick={handleSubmit}>
             <Button.Content hidden>Get Your Quote</Button.Content>
             <Button.Content visible>
