@@ -1,9 +1,10 @@
-// Options for form dropdowns
+// DATA FOR FORM DROPDOWNS
 export const prefixOptions = [
   { key: "Mr", value: "Mr", text: "Mr" },
   { key: "Mrs", value: "Mrs", text: "Mrs" },
   { key: "Miss", value: "Miss", text: "Miss" },
   { key: "Ms", value: "Ms", text: "Ms" },
+  { key: "Dr", value: "Dr", text: "Dr" },
 ];
 
 export const vehTypeOptions = [
