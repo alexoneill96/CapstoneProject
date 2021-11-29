@@ -8,21 +8,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class VehicleValueFactorTest {
 
-    // Set up test variables
+    // SET UP TEST VARIABLES
     String validValueLower, validValueMiddle, validValueUpper, invalidValue;
-
     VehicleValueFactor vehicleValueFactor;
 
 
     @BeforeEach
     void setUp() throws NumberFormatException{
-        // Setup test data
+        // SET UP TEST DATA
         validValueLower = "4999";
         validValueMiddle = "5000";
         validValueUpper = "50000";
         invalidValue = "Invalid";
-
-        // vehicle value factor object
+        // VEHICLE VALUE FACTOR OBJECT
         vehicleValueFactor = new VehicleValueFactor();
     }
 
@@ -34,7 +32,6 @@ class VehicleValueFactorTest {
     void vehicleValueFactorTestValidLower() {
         double expectedResult = 1.0;
         double actualResult = vehicleValueFactor.valueFactor(validValueLower);
-
         assertEquals(expectedResult, actualResult);
     }
 
@@ -42,7 +39,6 @@ class VehicleValueFactorTest {
     void vehicleValueFactorTestValidMiddle() {
         double expectedResult = 1.0;
         double actualResult = vehicleValueFactor.valueFactor( validValueMiddle);
-
         assertEquals(expectedResult, actualResult);
     }
 
@@ -50,7 +46,6 @@ class VehicleValueFactorTest {
     void vehicleValueFactorTestValidUpper() {
         double expectedResult = 1.2;
         double actualResult = vehicleValueFactor.valueFactor( validValueUpper);
-
         assertEquals(expectedResult, actualResult);
     }
 

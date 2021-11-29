@@ -8,21 +8,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class EngineSizeFactorTest {
 
-    // Set up test variables
+    // SETUP TEST VARIABLES
     String validEngineSize, invalidEngineSize;
 
-    // Instantiation of method
+    // INSTANTIATION OF METHOD
     EngineSizeFactor engineSizeFactor;
-
 
     @BeforeEach
     void setUp() throws IllegalArgumentException {
         validEngineSize = "1000";
         invalidEngineSize = "Invalid";
-
-        // engineSizeFactor object
+        // engineSizeFactor OBJECT
         engineSizeFactor = new EngineSizeFactor();
-
     }
 
     @AfterEach
@@ -32,16 +29,12 @@ class EngineSizeFactorTest {
     @Test
     void sizeFactorValid() {
         double expectedResult = 1.0;
-
         double actualResult = engineSizeFactor.sizeFactor(validEngineSize);
-
         assertEquals(expectedResult, actualResult, 0.1);
-
     }
 
     @Test
     void sizeFactorInvalid() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {engineSizeFactor.sizeFactor(invalidEngineSize);});
-
     }
 }

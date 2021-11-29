@@ -8,21 +8,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CommercialUseFactorTest {
 
-    // Setup Variables
+    // SETUP VARIABLES
     String validYes, validNo, invalid;
 
-    // Declaring the class object
+    // DECLARING THE CLASS OBJECT
     CommercialUseFactor commercialUseFactor;
-
 
     @BeforeEach
     void setUp() throws IllegalArgumentException{
 
-        // setup test data
+        // SETUP TEST DATA
         validYes = "Yes";
         validNo = "No";
         invalid = "Invalid";
-
         commercialUseFactor = new CommercialUseFactor();
     }
 
@@ -34,7 +32,6 @@ class CommercialUseFactorTest {
     void commercialUseFactorValidYes() {
         double expectedResult = 1.1;
         double actualResult = commercialUseFactor.commercialUseFactor(validYes);
-
         assertEquals(expectedResult,actualResult, 0.1);
 
     }
@@ -43,11 +40,9 @@ class CommercialUseFactorTest {
     void commercialUseFactorValidNo() {
         double expectedResult = 1.0;
         double actualResult = commercialUseFactor.commercialUseFactor(validNo);
-
         assertEquals(expectedResult,actualResult, 0.1);
 
     }
-
 
     @Test
     void commercialUseFactorInvalid() {

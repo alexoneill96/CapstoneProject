@@ -8,10 +8,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TestQuoteAmount {
 
-    // Set up test variables
+    // SETUP THE TEST VARIABLES
     String vehicleType, engineSize, additionalDrivers, commercialUse, outsideState, vehicleValue;
 
-    // Instantiation of method
+    // INSTANTIATION OF METHODS
     QuoteAmountCalculator quoteAmountCalculator;
     Applicant applicant;
     Applicant applicant2;
@@ -19,7 +19,7 @@ class TestQuoteAmount {
     @BeforeEach
     void setUp() {
 
-        // setup test data
+        // SETUP TEST DATA
         applicant = new Applicant(3L, "prefix", "firstName", "lastName", "telephone", "address1", "address2",
                 "city", "postcode","Hatchback", "1600", "3", "Yes", "Yes", "date",
                 "500", "N/A", 0.0 );
@@ -28,25 +28,21 @@ class TestQuoteAmount {
                 "city", "postcode","Cabriolet", "3000", "1", "No", "No", "date",
                 "15000", "N/A", 0.0 );
 
-        // businessLogic object
+        // businessLogic OBJECT
        quoteAmountCalculator = new QuoteAmountCalculator();
     }
 
     @Test
     void calculateQuote1() {
-
         double expectedResult = 371.71;
         quoteAmountCalculator.calculateQuote(applicant);
         assertEquals(expectedResult, applicant.getQuoteAmount(), 0.2);
-
     }
 
     @Test
     void calculateQuote2() {
-
         double expectedResult = 514.80;
         quoteAmountCalculator.calculateQuote(applicant2);
         assertEquals(expectedResult, applicant2.getQuoteAmount(), 0.2);
-
     }
 }

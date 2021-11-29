@@ -8,10 +8,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class VehicleTypeFactorTest {
 
-    // Set up test variables
+    // SET UP TEST VARIABLES
     String validVehicleType, invalidVehicleType;
 
-    // Instantiation of method
+    // INSTANTIATION OF METHOD
     VehicleTypeFactor vehicleTypeFactor;
 
 
@@ -19,10 +19,8 @@ class VehicleTypeFactorTest {
     void setUp() throws IllegalArgumentException {
         validVehicleType = "Hatchback";
         invalidVehicleType = "Invalid";
-
-        // engineSizeFactor object
+        // engineSizeFactor OBJECT
         vehicleTypeFactor = new VehicleTypeFactor();
-
     }
 
     @AfterEach
@@ -32,16 +30,12 @@ class VehicleTypeFactorTest {
     @Test
     void typeFactorValid() {
         double expectedResult = 1.6;
-
         double actualResult = vehicleTypeFactor.typeFactor(validVehicleType);
-
         assertEquals(expectedResult, actualResult, 0.1);
-
     }
 
     @Test
     void sizeFactorInvalid() {
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {vehicleTypeFactor.typeFactor(invalidVehicleType);});
-
     }
 }
