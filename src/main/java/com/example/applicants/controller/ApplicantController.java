@@ -1,11 +1,10 @@
 package com.example.applicants.controller;
-
+// IMPORTS
 import com.example.applicants.model.Applicant;
 import com.example.applicants.service.ApplicantService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -26,16 +25,14 @@ public class ApplicantController {
         return service.getAllApplicants();
     }
 
+    // SAVE NEW APPLICANT
     @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/applicants")
     Applicant save(@RequestBody Applicant applicant) {
         return service.save(applicant);
-    }//POST
+    }
 
-
-
-
-
+    // GET SINGLE APPLICANT
     @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/applicants/id")
     Applicant getSingleApplicant(@RequestParam Long id) {
@@ -44,8 +41,9 @@ public class ApplicantController {
         } catch (NoSuchElementException noSuchElementException){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ID_NOT_FOUND_ERROR_MSG + id, noSuchElementException);
         }
-    } //GET
+    }
 
+    // DELETE SINGLE APPLICANT
     @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/applicants")
     void deleteSingleApplicant(@RequestParam Long id) {
@@ -54,11 +52,9 @@ public class ApplicantController {
         } catch (NoSuchElementException noSuchElementException){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ID_NOT_FOUND_ERROR_MSG + id, noSuchElementException);
         }
+    }
 
-
-
-    } //DELETE
-
+    // UPDATE TELEPHONE NUMBER
     @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/applicants")
     void updateAPhoneNumber(@RequestParam Long id, @RequestParam String telephoneNumber) {
@@ -67,8 +63,5 @@ public class ApplicantController {
         } catch (NoSuchElementException noSuchElementException){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ID_NOT_FOUND_ERROR_MSG + id, noSuchElementException);
         }
-
-    //UPDATE telephoneNumber
     }
-
 }
