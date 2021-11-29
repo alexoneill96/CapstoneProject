@@ -12,6 +12,14 @@ function Create() {
   const refreshPage = () => {
     window.location.reload();
   };
+
+  // GET CURRENT DATE
+  let newDate = new Date();
+  let date = newDate.getDate();
+  let month = newDate.getMonth();
+  let year = newDate.getFullYear();
+  let dateFormatted = `${year}-${month}-${date}`;
+
   // Properties mapping to form fields
   const [prefix, setPrefix] = useState();
   const [firstName, setFirstName] = useState("");
@@ -544,6 +552,7 @@ function Create() {
               <label>Date of first registration:</label>
               <Form.Input
                 type="date"
+                max={dateFormatted}
                 onChange={(e) => setDateRegistered(e.target.value)}
                 error={
                   fieldErrors.dateRegistered
