@@ -14,9 +14,9 @@ function Admin() {
   const [telephoneNumber, setTelephoneNumber] = useState(null);
   const [customerData, setCustomerData] = useState([]);
 
+  // CALL API GET
   function callMockAPIWithAxiosGET() {
     const endpointURL = `http://capstone-project-capstone-project.allstatejenkins11.conygre.com/applicants/id?id=${idToGet}`;
-
     axios
       .get(endpointURL)
       .then((response) => {
@@ -36,6 +36,7 @@ function Admin() {
       });
   }
 
+  // CALL API DELETE
   function callMockAPIWithAxiosDELETE() {
     const endpointURL = `http://capstone-project-capstone-project.allstatejenkins11.conygre.com/applicants?id=${idToDelete}`;
     axios
@@ -57,17 +58,16 @@ function Admin() {
       });
   }
 
+  // CALL API UPDATE
   function callMockAPIWithAxiosPUT() {
     const formData = {
       telephoneNumber,
     };
-
     const endpointURL =
       "http://capstone-project-capstone-project.allstatejenkins11.conygre.com/applicants/?id=" +
       idToUpdate +
       "&telephoneNumber=" +
       telephoneNumber;
-
     axios
       .put(endpointURL, formData)
       .then((response) => {
@@ -91,7 +91,7 @@ function Admin() {
       });
   }
 
-  // Populates a table with customer data if customerDate != null
+  // POPULATES A TABLE WITH CUSTOMER DATA
   const renderDataTable = () => {
     if (customerData.id > 0) {
       let quote2dp = customerData.quoteAmount.toFixed(2);
@@ -111,7 +111,6 @@ function Admin() {
                 <Table.HeaderCell>Postcode</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-
             <Table.Body>
               <Table.Row>
                 <Table.Cell>{customerData.id}</Table.Cell>
@@ -138,7 +137,6 @@ function Admin() {
                 <Table.HeaderCell>Date Registered</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-
             <Table.Body>
               <Table.Row>
                 <Table.Cell>{customerData.vehicleType}</Table.Cell>
@@ -151,14 +149,12 @@ function Admin() {
               </Table.Row>
             </Table.Body>
           </Table>
-
           <Table celled color={'blue'} >
             <Table.Header>
               <Table.Row >
                 <Table.HeaderCell>Quote Amount</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
-
             <Table.Body>
               <Table.Row positive>
                 <Table.Cell>${quote2dp}</Table.Cell>
@@ -170,12 +166,10 @@ function Admin() {
     }
   };
 
+  // HTML
   return (
     <div>
       <Form className="main-form">
-        {/* <div>
-          <Image src={logo} className="center" />
-        </div> */}
         <Segment color="grey" className="first-box">
           <Image src={logo} />
         </Segment>
@@ -194,7 +188,6 @@ function Admin() {
                 onChange={(e) => setIdToGet(e.target.value)}
               />
             </Form.Field>
-
             <Button animated='vertical' color={'green'} type="submit" onClick={callMockAPIWithAxiosGET}>
               <Button.Content visible>Get Driver</Button.Content>
               <Button.Content hidden>
@@ -243,7 +236,6 @@ function Admin() {
                 onChange={(e) => setTelephoneNumber(e.target.value)}
               />
             </Form.Field>
-
             <Button animated='vertical' color={'yellow'} type="submit" onClick={callMockAPIWithAxiosPUT}>
               <Button.Content visible>Update Telephone Number</Button.Content>
               <Button.Content hidden>
