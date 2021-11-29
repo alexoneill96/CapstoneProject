@@ -4,7 +4,6 @@ public class VehicleValueFactor {
     public static double valueFactor(String currentValue) {
         double vehicleValueFactor = 0.0;
         int currentValueInt = Integer.parseInt(currentValue);
-
         try {
             if (currentValueInt > 0 && currentValueInt <= 5000) {
                 return vehicleValueFactor = 1.0;
@@ -15,6 +14,4 @@ public class VehicleValueFactor {
             throw new NumberFormatException("String cannot be converted to Int!");
         }
     }
-
-
 }

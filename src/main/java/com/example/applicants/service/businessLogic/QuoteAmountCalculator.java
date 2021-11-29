@@ -21,10 +21,7 @@ public class QuoteAmountCalculator {
         double commercialUseFactor = commercialUseFactor((applicant.getCommercialPurposes()));
         double outsideStateUseFactor = outsideStateUseFactor((applicant.getUsedOutsideState()));
         double valueFactor = valueFactor((applicant.getCurrentValue()));
-
-
         double quoteAmount = (100*typeFactor*sizeFactor*additionalDriversFactor*commercialUseFactor*outsideStateUseFactor*valueFactor);
         applicant.setQuoteAmount(quoteAmount);
     }
-
 }

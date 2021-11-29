@@ -17,7 +17,5 @@ public class VehicleTypeFactor {
         }else {
             throw new IllegalArgumentException("Invalid Vehicle Type Exception");
         }
-
-
     }
 }
