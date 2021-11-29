@@ -1,8 +1,8 @@
 package com.example.applicants.model;
 
+// IMPORTS
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,14 +12,12 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 @NoArgsConstructor
-//@AllArgsConstructor
 @Entity (name = "DRIVER_DETAILS")
 public class Applicant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
 
     public Applicant(Long id, String prefix, String firstName, String lastName, String telephoneNumber, String addressLine1, String addressLine2, String city, String zipCode, String vehicleType, String engineSize, String additionalDrivers, String commercialPurposes, String usedOutsideState, String dateRegistered, String currentValue, String comments, double quoteAmount) {
         this.id = id;
@@ -40,7 +38,6 @@ public class Applicant {
         this.currentValue = currentValue;
         this.comments = comments;
         this.quoteAmount = quoteAmount;
-
     }
 
     private String prefix;
@@ -62,12 +59,7 @@ public class Applicant {
     private String comments;
     private double quoteAmount;
 
-
-
-
-
-
-
+    // GETTERS & SETTERS
     public Long getId() {
         return id;
     }
@@ -212,14 +204,14 @@ public class Applicant {
         this.quoteAmount = quoteAmount;
     }
 
-
+    // FORMAT CURRENCY FUNCTION
     public String formatCurrencyDouble(Double value){
-        //double valueDouble = Double.parseDouble(value);
         Locale locale = new Locale("en", "US");
         NumberFormat formatter = NumberFormat.getCurrencyInstance(locale);
         return formatter.format(value);
     }
 
+    // FORMAT CURRENCY FUNCTION (For String Values)
     public String formatCurrencyString(String value){
         double valueDouble = Double.parseDouble(value);
         Locale locale = new Locale("en", "US");
@@ -227,6 +219,7 @@ public class Applicant {
         return formatter.format(valueDouble);
     }
 
+    // FORMAT DATE FUNCTION
     public String formatDateRegistered(){
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         return formatter.format(dateRegistered);
