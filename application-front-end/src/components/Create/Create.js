@@ -303,7 +303,7 @@ function Create() {
     if (
       currentValue === "" ||
       currentValue === null ||
-      currentValue === undefined
+      currentValue === undefined || currentValue > 50000
     ) {
       fieldErrors.currentValue = true;
       setFieldErrors({ ...fieldErrors });
