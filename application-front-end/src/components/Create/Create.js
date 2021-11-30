@@ -567,10 +567,12 @@ function Create() {
                 placeholder="Current value"
                 onChange={(e) => setCurrentValue(e.target.value)}
                 error={
-                  fieldErrors.currentValue
+                  fieldErrors.currentValue.missing
                     ? ErrorMsgConstants.CURRENT_VALUE_REQUIRED
+                      : fieldErrors.currentValue.invalid ? ErrorMsgConstants.CURRENT_VALUE_INVALID
                     : false
                 }
+
               />
             </Form.Field>
             <Form.Field>
