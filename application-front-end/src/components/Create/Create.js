@@ -56,7 +56,10 @@ function Create() {
     additionalDrivers: false,
     commercialPurposes: false,
     usedOutsideState: false,
-    currentValue: false,
+    currentValue: {
+      missing: false,
+      invalid: false,
+    },
     dateRegistered: false,
   });
 
@@ -303,14 +306,24 @@ function Create() {
     if (
       currentValue === "" ||
       currentValue === null ||
-      currentValue === undefined || currentValue > 50000
+      currentValue === undefined
     ) {
       fieldErrors.currentValue = true;
       setFieldErrors({ ...fieldErrors });
       return false;
     }
 
-    fieldErrors.currentValue = false;
+    if(
+        currentValue > 50000
+    ){
+      fieldErrors.currentValue.missing = false;
+      fieldErrors.currentValue.invalid = true;
+      setFieldErrors({...fieldErrors});
+      return false;
+    }
+
+    fieldErrors.currentValue.missing = false;
+    fieldErrors.currentValue.invalid = false;
     setFieldErrors({ ...fieldErrors });
     return true;
   };

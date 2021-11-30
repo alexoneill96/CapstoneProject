@@ -11,4 +11,5 @@ export const VEHICLE_TYPE_REQUIRED = "Vehicle Type required";
 export const ENGINE_SIZE_REQUIRED = "Engine size required";
 export const ADDITIONAL_DRIVERS_REQUIRED = "Additional drivers required";
 export const CURRENT_VALUE_REQUIRED = "Current value required";
+export const CURRENT_VALUE_INVALID = "Current value must be below $50,000";
 export const DATE_REGISTERED_REQUIRED = "Date of Registration required";
