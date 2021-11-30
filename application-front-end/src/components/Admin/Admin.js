@@ -6,6 +6,7 @@ import axios from "axios";
 import logo from "./allstate-banner.png";
 import { toast } from "react-toastify";
 import {Link} from "react-router-dom";
+import SERVER_ADDRESS from "../../server/server";
 
 function Admin() {
   const [idToGet, setIdToGet] = useState(null);
@@ -16,7 +17,7 @@ function Admin() {
 
   // CALL API GET
   function callMockAPIWithAxiosGET() {
-    const endpointURL = `http://capstone-project-capstone-project.allstatejenkins11.conygre.com/applicants/id?id=${idToGet}`;
+    const endpointURL = `${SERVER_ADDRESS}applicants/id?id=${idToGet}`;
     axios
       .get(endpointURL)
       .then((response) => {
@@ -38,7 +39,7 @@ function Admin() {
 
   // CALL API DELETE
   function callMockAPIWithAxiosDELETE() {
-    const endpointURL = `http://capstone-project-capstone-project.allstatejenkins11.conygre.com/applicants?id=${idToDelete}`;
+    const endpointURL = `${SERVER_ADDRESS}applicants?id=${idToDelete}`;
     axios
       .delete(endpointURL)
       .then((response) => {
@@ -64,7 +65,7 @@ function Admin() {
       telephoneNumber,
     };
     const endpointURL =
-      "http://capstone-project-capstone-project.allstatejenkins11.conygre.com/applicants/?id=" +
+      `${SERVER_ADDRESS}/applicants/?id=` +
       idToUpdate +
       "&telephoneNumber=" +
       telephoneNumber;

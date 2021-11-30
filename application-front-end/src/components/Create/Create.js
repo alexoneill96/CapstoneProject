@@ -7,6 +7,7 @@ import logo from "./allstate-banner.png";
 import "./Create.css";
 import { toast } from "react-toastify";
 import {Link} from "react-router-dom";
+import SERVER_ADDRESS from "../../server/server";
 
 // FUNCTION FOR RELOADING PAGE ON FORM COMPLETION
 function Create() {
@@ -78,7 +79,7 @@ function Create() {
       currentValue,
       dateRegistered,
     };
-    const endpointURL = "http://capstone-project-capstone-project.allstatejenkins11.conygre.com/applicants";
+    const endpointURL = `${SERVER_ADDRESS}applicants`;
     axios
       .post(endpointURL, formData)
       .then((response) => console.log(response.data))
