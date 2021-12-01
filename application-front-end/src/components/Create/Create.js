@@ -18,10 +18,10 @@ function Create() {
   // GET CURRENT DATE
   let newDate = new Date();
   let date = newDate.getDate();
-  let month = newDate.getMonth();
+  let month = newDate.getMonth()+1;
   let year = newDate.getFullYear();
   let dateFormatted = `${year}-${month}-${date}`;
-  alert(dateFormatted);
+
 
   // INITIALISING FORM FIELD STATES
   const [prefix, setPrefix] = useState();
@@ -581,7 +581,7 @@ function Create() {
               <Form.Input
                 type="date"
                 max={dateFormatted}
-                min="2021-11-10"
+                min="1980-11-10"
                 onChange={(e) => setDateRegistered(e.target.value)}
                 error={
                   fieldErrors.dateRegistered
