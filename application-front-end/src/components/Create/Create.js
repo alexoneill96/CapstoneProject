@@ -17,7 +17,7 @@ function Create() {
 
   // GET CURRENT DATE
   let newDate = new Date();
-  let date = newDate.getDate();
+  let date = newDate.getDate().toLocaleString("en-US",{minimumIntegerDigits: 2, useGrouping: false})
   let month = newDate.getMonth()+1;
   let year = newDate.getFullYear();
   let dateFormatted = `${year}-${month}-${date}`;
