@@ -21,7 +21,7 @@ function Create() {
   let month = newDate.getMonth()+1;
   let year = newDate.getFullYear();
   let dateFormatted = `${year}-${month}-${date}`;
-  alert(dateFormatted);
+
 
 
   // INITIALISING FORM FIELD STATES
